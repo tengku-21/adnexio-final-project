@@ -7,10 +7,16 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $query = Order::with('user');
+
+        if (!$request->user()->isAdmin()) {
+            $query->where('user_id', $request->user()->id);
+        }
+
         return response()->json(
-            Order::with(['user','package'])->paginate(20)
+            $query->paginate(20)
         );
     }
 
