@@ -20,6 +20,8 @@ return [
         'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
     ],
 
+    'middleware' => ['auth:sanctum'],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards

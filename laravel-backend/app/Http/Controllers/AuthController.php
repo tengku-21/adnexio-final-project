@@ -47,17 +47,29 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
+        $token = $request->user()->currentAccessToken();
+
+        $token->delete();
 
         return response()->json([
             'message' => 'Logged out successfully.',
         ]);
     }
 
-    public function me(Request $request)
-    {
-        return response()->json(
-            $request->user()
-        );
-    }
+
+
+
+public function me(Request $request)
+{
+    // dump([
+    //     'user' => $request->user()?->id,
+    //     'token' => $request->user()?->currentAccessToken()?->id,
+    //     'bearer' => $request->bearerToken(),
+    // ]);
+
+    return response()->json(
+        $request->user()
+    );
+}
+
 }

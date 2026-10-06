@@ -10,7 +10,7 @@ class PackageController extends Controller
     public function index()
     {
         return response()->json(
-            Package::with('user')->paginate(20)
+            Package::paginate(20)
         );
     }
 
@@ -19,9 +19,9 @@ class PackageController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'detail' => ['nullable', 'string'],
+            'amount'=> ['nullable'],
+            'currency'=> ['nullable'],
         ]);
-
-        $data['user_id'] = $request->user()?->id;
 
         $package = Package::create($data);
 
@@ -40,6 +40,8 @@ class PackageController extends Controller
         $data = $request->validate([
             'name' => ['sometimes', 'string', 'max:255'],
             'detail' => ['sometimes', 'string'],
+            'amount' => ['nullable'],
+            'currency' => ['nullable'],
         ]);
 
         $package->update($data);
