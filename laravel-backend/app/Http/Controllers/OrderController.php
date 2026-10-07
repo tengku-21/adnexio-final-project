@@ -50,7 +50,7 @@ class OrderController extends Controller
         return response()->json(
             $order->load([
                 'user',
-                'payments',
+                'payments.documents',
                 'package'
             ])
         );

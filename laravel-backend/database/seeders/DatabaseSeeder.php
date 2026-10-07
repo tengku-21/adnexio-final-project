@@ -258,9 +258,9 @@ class DatabaseSeeder extends Seeder
             'order_id' => null,
             'payment_id' => 1,
             'disk' => 'public',
-            'path' => 'documents/payment-1.png',
-            'original_name' => 'payment-1.png',
-            'mime_type' => 'image/png',
+            'path' => 'documents/payment-1.pdf',
+            'original_name' => 'payment-1.pdf',
+            'mime_type' => 'application/pdf',
             'size' => 180000,
         ]);
     }

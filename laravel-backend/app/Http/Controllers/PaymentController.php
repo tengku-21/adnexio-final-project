@@ -10,7 +10,7 @@ class PaymentController extends Controller
     public function index()
     {
         return response()->json(
-            Payment::with(['order', 'user'])->paginate(20)
+            Payment::with(['order', 'user', 'documents'])->paginate()
         );
     }
 
@@ -37,7 +37,7 @@ class PaymentController extends Controller
     public function show(Payment $payment)
     {
         return response()->json(
-            $payment->load(['order', 'user'])
+            $payment->load(['order', 'user', 'documents'])
         );
     }
 
