@@ -15,7 +15,17 @@ class Order extends Model
         'email',
         'detail',
         'location',
+        'amount',
+        'date',
+        'status'
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'amount' => 'decimal:2',
+        ];
+    }
 
     public function user()
     {
@@ -25,5 +35,10 @@ class Order extends Model
     public function package(): BelongsTo
     {
         return $this->belongsTo(Package::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Document as ModelsDocument;
 use Illuminate\Database\Eloquent\Model;
 
 class Package extends Model
@@ -10,13 +11,21 @@ class Package extends Model
         'name',
         'detail',
         'amount',
-        'currency'
+        'currency',
+        'popular'
     ];
 
     protected function casts(): array
     {
         return [
             'amount' => 'decimal:2',
+            'popular' => 'boolean',
         ];
+    }
+
+    
+    public function documents()
+    {
+        return $this->hasMany(ModelsDocument::class);
     }
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('detail');
             $table->decimal('amount', 12, 2)->default(0.00);
             $table->string('currency', 3)->default('MYR');
+            $table->boolean('popular')->default(false);
 
             $table->timestamps();
         });

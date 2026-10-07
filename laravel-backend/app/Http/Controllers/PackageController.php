@@ -9,8 +9,12 @@ class PackageController extends Controller
 {
     public function index()
     {
+        $query = Package::with([
+            'documents',
+        ]);
+
         return response()->json(
-            Package::paginate(20)
+            $query->paginate()
         );
     }
 
@@ -21,6 +25,7 @@ class PackageController extends Controller
             'detail' => ['nullable', 'string'],
             'amount'=> ['nullable'],
             'currency'=> ['nullable'],
+            'popular'=> ['nullable', 'boolean'],
         ]);
 
         $package = Package::create($data);
@@ -31,7 +36,7 @@ class PackageController extends Controller
     public function show(Package $package)
     {
         return response()->json(
-            $package->load('user')
+            $package->load('documents')
         );
     }
 
@@ -42,6 +47,7 @@ class PackageController extends Controller
             'detail' => ['sometimes', 'string'],
             'amount' => ['nullable'],
             'currency' => ['nullable'],
+            'popular'=> ['nullable', 'boolean'],
         ]);
 
         $package->update($data);

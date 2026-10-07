@@ -26,8 +26,13 @@ return new class extends Migration
                 $table->string('name');
                 $table->string('phone');
                 $table->string('email');
+                $table->dateTime('date');
                 $table->text('location');
                 $table->string('detail')->nullable();
+                $table->decimal('amount', 12, 2)->default(0.00);
+
+                $table->string('status')->default('pending');
+
 
             $table->timestamps();
         });

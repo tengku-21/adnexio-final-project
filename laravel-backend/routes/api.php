@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 // For Authentication
 Route::post('/auth/login', [AuthController::class, 'login']);
+Route::post('/auth/signup', [AuthController::class, 'signup']);
 
 
 // Public / guest APIs - public can get
@@ -26,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     
     // Users
     Route::apiResource('users', UserController::class);
+    
     
     // Packages
     Route::post('/packages', [PackageController::class, 'store']);

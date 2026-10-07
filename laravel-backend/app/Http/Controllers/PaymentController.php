@@ -27,7 +27,7 @@ class PaymentController extends Controller
         ]);
 
         $data['user_id'] = $request->user()?->id;
-        $data['status'] = 'pending';
+        $data['status'] = 'paid'; //harcode to paid
 
         $payment = Payment::create($data);
 

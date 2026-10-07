@@ -72,4 +72,32 @@ public function me(Request $request)
     );
 }
 
+public function signup(Request $request)
+{
+    $validated = $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255'],
+        'password' => ['required', 'string', 'min:8'],
+    ]);
+
+    // Check if the email already exists
+    if (User::where('email', $validated['email'])->exists()) {
+        return response()->json([
+            'message' => 'An account with this email already exists.',
+        ], 409);
+    }
+
+    $validated['password'] = Hash::make($validated['password']);
+
+    $user = User::create($validated);
+
+    $token = $user->createToken('api-token')->plainTextToken;
+
+    return response()->json([
+        'message' => 'Signup successful.',
+        'user' => $user,
+        'token' => $token,
+    ], 201);
+}
+
 }

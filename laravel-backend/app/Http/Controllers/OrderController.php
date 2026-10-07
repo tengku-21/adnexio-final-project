@@ -9,14 +9,18 @@ class OrderController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Order::with('user');
+        $query = Order::with([
+            'package',
+            'user',
+            'payments.documents',
+        ]);
 
         if (!$request->user()->isAdmin()) {
             $query->where('user_id', $request->user()->id);
         }
 
         return response()->json(
-            $query->paginate(20)
+            $query->paginate(10)
         );
     }
 
@@ -28,6 +32,10 @@ class OrderController extends Controller
             'location' => ['required', 'string'],
             'email' => ['required', 'email'],
             'detail' => ['nullable', 'string'],
+            'package_id' => ['required', 'numeric'],
+            'amount' => ['required', 'numeric', 'min:0'],
+            'date' => ['required'],
+            'status' => ['nullable']
         ]);
 
         $data['user_id'] = $request->user()?->id;
@@ -40,9 +48,14 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         return response()->json(
-            $order->load('user')
+            $order->load([
+                'user',
+                'payments',
+                'package'
+            ])
         );
     }
+
 
     public function update(Request $request, Order $order)
     {
@@ -52,6 +65,10 @@ class OrderController extends Controller
             'location' => ['sometimes', 'string'],
             'email' => ['sometimes', 'email'],
             'detail' => ['sometimes', 'string'],
+            'package_id' => ['nullable', 'numeric'],
+            'amount' => ['required', 'numeric', 'min:0'],
+            'date' => ['required'],
+            'status' => ['sometimes']
         ]);
 
         $order->update($data);
