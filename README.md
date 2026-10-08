@@ -23,7 +23,7 @@ This repo has two parts:
 From the repo root:
 
 ```bash
-node setup.mjs
+node setup.js
 ```
 
 This works on macOS, Windows and Linux. 
@@ -113,3 +113,11 @@ npm run build
 ## BIG BIG NOTE
 
 - **If you open react folder in editor it probably show a lot of syntax error. This is due to shadcdn by default use tsx. To counter this, i try to pass type where i can. But to make it easier i change in compile config so that it will ignore typescript error when compile.
+
+- **If you feeling extra and want to refactor, you can turn it on again by going to package json  change the build script to be "build": "tsc -b && vite build".
+
+## END NOTE
+
+Thank you for sir Uzair, for all classes in this short but compact laravel-react course. Hopefully i can implement the things i learn in my next2 project.
+
+Once again, thank you sir.
