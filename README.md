@@ -1,6 +1,6 @@
 # Project Name
 
-Short one-line description of the project.
+Heyyo, this is a final project (Fullstack laravel-react) for adnexio course. Below is the guide to setup
 
 This repo has two parts:
 
