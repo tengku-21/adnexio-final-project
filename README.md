@@ -26,7 +26,8 @@ From the repo root:
 node setup.mjs
 ```
 
-This works on macOS, Windows and Linux. It will:
+This works on macOS, Windows and Linux. 
+This script will basically do below steps for you instead:
 
 1. Install the React dependencies and build the frontend
 2. Install the Laravel dependencies
@@ -44,6 +45,8 @@ Then open http://localhost:8000 or http://127.0.0.1:8000.
 > ```
 
 ### Option 2: Manual setup
+
+If feeling extra rajin or want to troubleshoot maybe can do manual steps below.
 
 **1. Build the frontend**
 
