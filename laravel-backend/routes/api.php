@@ -14,7 +14,7 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/signup', [AuthController::class, 'signup']);
 
 
-// Public / guest APIs - public can get
+// Public / guest APIs - public can get thiss
 Route::get('/packages', [PackageController::class, 'index']);
 
 
