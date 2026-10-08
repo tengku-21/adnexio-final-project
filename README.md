@@ -41,7 +41,7 @@ Then open http://localhost:8000 or http://127.0.0.1:8000.
 > **Warning:** `migrate:fresh` drops all tables and re-seeds them. To keep your existing data, run:
 >
 > ```bash
-> node setup.mjs --keep-data
+> node setup.js --keep-data
 > ```
 
 ### Option 2: Manual setup
@@ -92,7 +92,7 @@ Open http://localhost:8000 or http://127.0.0.1:8000.
 ├── laravel-backend/     # Laravel API
 │   └── public/app/      # React build output (generated, don't edit)
 ├── react-frontend/      # React source code
-└── setup.mjs            # One-command setup script
+└── setup.js            # One-command setup script
 ```
 
 The React app is built into `laravel-backend/public/app`, and Laravel serves it, so you only need to run one server in production-style use.
