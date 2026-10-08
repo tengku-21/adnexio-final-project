@@ -114,9 +114,9 @@ npm run build
 ```
 ## BIG BIG NOTE
 
-- **If you open react folder in editor it probably show a lot of syntax error. This is due to shadcdn by default use tsx. To counter this, i try to pass type where i can. But to make it easier i change in compile config so that it will ignore typescript error when compile.
+- **If you open react folder in editor it probably show a lot of syntax error. This is due to shadcdn by default use tsx. To counter this, i try to pass type where i can. But to make it easier i change in compile config so that it will ignore typescript error when compile.**
 
-- **If you feeling extra and want to refactor, you can turn it on again by going to package json  change the build script to be "build": "tsc -b && vite build".
+- **If you feeling extra and want to refactor, you can turn it on again by going to package json  change the build script to be "build": "tsc -b && vite build".**
 
 ## END NOTE
 
