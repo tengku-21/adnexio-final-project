@@ -15,6 +15,7 @@ import { usePackages } from "@/context/packageProvider";
 import { useNavigate } from "react-router";
 import useAuth from "@/hooks/useAuth";
 import type { PackageData } from "@/types/packageType";
+import moment from "moment";
 
 type CreateOrderProps = {
   onSuccess?: () => void;
@@ -35,7 +36,7 @@ export default function BookPelamin({ onSuccess }: CreateOrderProps) {
   const [createOrder, { isLoading }] = useCreateOrderMutation();
 
   const navigate = useNavigate()
-  const {name, email} = useAuth()
+  const {name, email, isAdmin} = useAuth()
   const packageData : PackageData = usePackages();
   const packages = packageData?.data ?? [];
 
@@ -223,6 +224,8 @@ export default function BookPelamin({ onSuccess }: CreateOrderProps) {
                 onChange={handleChange}
                 placeholder="Customer name"
                 required
+                disabled={!isAdmin}
+
               />
             </div>
 
@@ -248,6 +251,8 @@ export default function BookPelamin({ onSuccess }: CreateOrderProps) {
                 onChange={handleChange}
                 placeholder="customer@example.com"
                 required
+                disabled={!isAdmin}
+
               />
             </div>
 
@@ -273,6 +278,7 @@ export default function BookPelamin({ onSuccess }: CreateOrderProps) {
                               id="date"
                               name="date"
                               type="datetime-local"
+                              min={moment().startOf("day").format("YYYY-MM-DDTHH:mm")}
                               value={form.date}
                               onChange={handleChange}
                               placeholder="0.00"

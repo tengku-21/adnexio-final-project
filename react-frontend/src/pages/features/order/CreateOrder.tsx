@@ -45,7 +45,8 @@ export default function CreateOrder({
 
   const [error, setError] = useState("");
 
-  const {name, email} = useAuth()
+  const {name, email, isAdmin} = useAuth()
+
 
   useEffect(()=>{
     setForm(prev => ({
@@ -152,6 +153,7 @@ export default function CreateOrder({
                 onChange={handleChange}
                 placeholder="Customer name"
                 required
+                disabled={!isAdmin}
               />
             </div>
 
@@ -177,7 +179,7 @@ export default function CreateOrder({
                 onChange={handleChange}
                 placeholder="customer@example.com"
                 required
-                disabled
+                disabled={!isAdmin}
               />
             </div>
 

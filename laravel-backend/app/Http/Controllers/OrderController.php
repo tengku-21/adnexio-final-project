@@ -9,6 +9,11 @@ class OrderController extends Controller
 {
     public function index(Request $request)
     {
+        $filters = $request->validate([
+            'start_date' => ['nullable', 'date'],
+            'end_date'   => ['nullable', 'date', 'after_or_equal:start_date'],
+        ]);
+
         $query = Order::with([
             'package',
             'user',
@@ -18,6 +23,11 @@ class OrderController extends Controller
         if (!$request->user()->isAdmin()) {
             $query->where('user_id', $request->user()->id);
         }
+
+        //for filters
+         $query
+        ->when($filters['start_date'] ?? null, fn ($q, $date) => $q->whereDate('date', '>=', $date))
+        ->when($filters['end_date'] ?? null, fn ($q, $date) => $q->whereDate('date', '<=', $date));
 
         return response()->json(
             $query->paginate(10)
@@ -76,8 +86,10 @@ class OrderController extends Controller
         return response()->json($order);
     }
 
-    public function destroy(Order $order)
+    public function destroy(Request $request, Order $order)
     {
+        abort_unless($request->user()->isAdmin(), 403, 'Admins only can delete.');
+
         $order->delete();
 
         return response()->json([

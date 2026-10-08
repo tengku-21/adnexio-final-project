@@ -99,25 +99,17 @@ The React app is built into `laravel-backend/public/app`, and Laravel serves it,
 
 ## Development
 
-When you're actively changing the frontend, you don't need to rebuild every time. Run both servers separately:
+When you're actively changing the frontend, you can rebuild to test. By default the build dir for react will be outputted inside laravel.
 
 ```bash
 # Terminal 1: backend
 cd laravel-backend
 php artisan serve
 
-# Terminal 2: frontend with hot reload
+# Terminal 2: build
 cd react-frontend
-npm run dev
+npm run build
 ```
+## BIG BIG NOTE
 
-## Configuration
-
-- **Backend:** `laravel-backend/.env` (database, `APP_URL`, etc.). Set `APP_URL=http://localhost:8000` so uploaded file links are correct.
-- **Frontend:** `react-frontend/.env`. Set `VITE_API_URL=http://localhost:8000/api` before building.
-
-## Troubleshooting
-
-- **Blank page or "Failed to load module script":** rebuild the frontend with `npm run build` inside `react-frontend`.
-- **Uploaded images don't show:** run `php artisan storage:link` and check `APP_URL` in `.env`.
-- **"command not found":** make sure `node`, `php` and `composer` are installed and on your PATH.
+- **If you open react folder in editor it probably show a lot of syntax error. This is due to shadcdn by default use tsx. To counter this, i try to pass type where i can. But to make it easier i change in compile config so that it will ignore typescript error when compile.

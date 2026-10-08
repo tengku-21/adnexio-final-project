@@ -22,6 +22,8 @@ import EditOrder from "./EditOrder";
 import OneOrder from "./OneOrder";
 
 import moment from "moment"
+import useAuth from "@/hooks/useAuth";
+import { Input } from "@/components/ui/input";
 
 type PackageOption = {
   id: number;
@@ -46,18 +48,22 @@ export default function OrderPage({
     "view" | "create" | "edit" | null
   >(null);
 
+  const [startDate, setStartDate] = useState()
+  const [endDate, setEndDate] = useState()
+
   const {
     data,
     isLoading,
     isError,
     refetch
-  } = useGetOrdersQuery(page);
+  } = useGetOrdersQuery({page:page, start_date: startDate , end_date: endDate});
 
     const orders = data?.data ?? [];
   
     const [deleteOrder, { isLoading: isDeleting }] =
     useDeleteOrderMutation();
 
+    const {isAdmin} = useAuth()
 
   const currentPage = data?.current_page ?? page;
   const lastPage = data?.last_page ?? 1;
@@ -137,6 +143,11 @@ export default function OrderPage({
             </div>
           ) : (
             <>
+              <div className="flex gap-10 px-4 pb-8">
+                <Input className="max-w-80" type="date" max={endDate} onChange={(e:any)=> setStartDate(e.target.value)}/>
+                -
+                <Input className="max-w-80" type="date" min={startDate} onChange={(e:any)=> setStartDate(e.target.value)}/>
+              </div>
               <div className="rounded-md border">
                 <Table>
                   <TableHeader>
@@ -223,7 +234,7 @@ export default function OrderPage({
 
                           <TableCell>
                             <DropdownMenu>
-                              <DropdownMenuTrigger asChild>
+                              <DropdownMenuTrigger>
                                 <Button
                                   variant="ghost"
                                   size="icon"
@@ -268,7 +279,7 @@ export default function OrderPage({
                                   Edit
                                 </DropdownMenuItem>
 
-                                <DropdownMenuItem
+                                {isAdmin && <DropdownMenuItem
                                   disabled={isDeleting}
                                   className="text-destructive focus:text-destructive"
                                   onClick={() =>
@@ -281,7 +292,7 @@ export default function OrderPage({
                                     className="mr-2"
                                   />
                                   Delete
-                                </DropdownMenuItem>
+                                </DropdownMenuItem>}
                               </DropdownMenuContent>
                             </DropdownMenu>
                           </TableCell>

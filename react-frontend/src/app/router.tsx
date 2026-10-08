@@ -1,6 +1,4 @@
-import {
-  createBrowserRouter,
-} from "react-router";
+import {createBrowserRouter} from "react-router";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -12,6 +10,7 @@ import GuestRoute from "../routes/GuestRoute";
 import OrderPage from "@/pages/features/order/OrderPage";
 import BookPelamin from "@/pages/features/book/BookingPage";
 import PackagePage from "@/pages/features/package/PackagePage";
+import NotFound from "@/pages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +55,8 @@ const router = createBrowserRouter([
       
     ],
   },
+
+  { path: "*", element: <NotFound /> },
 ]);
 
 export default router;

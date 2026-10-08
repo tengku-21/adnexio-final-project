@@ -178,6 +178,7 @@ export default function EditOrder({
                 value={form.name}
                 onChange={handleChange}
                 required
+                disabled={!isAdmin}
               />
             </div>
 
@@ -189,7 +190,8 @@ export default function EditOrder({
                 value={form.phone}
                 onChange={handleChange}
                 required
-              />
+                disabled={!isAdmin}
+              />                
             </div>
 
             <div className="space-y-2">

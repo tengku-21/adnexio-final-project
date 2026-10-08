@@ -9,7 +9,7 @@ use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Route;
 
 
-// For Authentication
+// Untuk Authentication - get token
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/signup', [AuthController::class, 'signup']);
 

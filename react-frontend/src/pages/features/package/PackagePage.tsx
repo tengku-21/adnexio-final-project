@@ -53,6 +53,7 @@ import OneOrder from "./OnePackage";
 import moment from "moment"
 import CreatePackage from "./CreatePackage";
 import DocumentGallery from "../documents/DocumentGallery";
+import useAuth from "@/hooks/useAuth";
 
 type PackageOption = {
   id: number;
@@ -70,6 +71,7 @@ export default function PackagePage({}: OrderPageProps) {
   const [selectedOrderId, setSelectedOrderId] =
     useState<number | null>(null);
     
+  const {isAdmin} = useAuth()
 
   const [dialog, setDialog] = useState<
     "view" | "create" | "edit" | null
