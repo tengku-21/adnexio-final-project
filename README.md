@@ -1,4 +1,4 @@
-# Project Name
+# Tengku Adnexio Final Project
 
 Heyyo, this is a final project (Fullstack laravel-react) for adnexio course. Below is the guide to setup
 
