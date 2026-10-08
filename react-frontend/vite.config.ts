@@ -11,4 +11,9 @@ export default defineConfig({
       "@": resolve(import.meta.dirname, "./src"),
     },
   },
+  base: "/app/", // asset URLs become /app/assets/...
+  build: {
+    outDir: "../laravel-backend/public/app",
+    emptyOutDir: true, // safe, because it only empties public/app
+  },
 })

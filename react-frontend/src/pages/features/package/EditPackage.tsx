@@ -77,7 +77,7 @@ export default function EditPackage({
     const packageId = e.target.value;
 
     const selectedPackage = packages.find(
-      (pkg) => String(pkg.id) === packageId
+      (pkg:any) => String(pkg.id) === packageId
     );
 
     setForm((prev) => ({

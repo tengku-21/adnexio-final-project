@@ -89,7 +89,8 @@ class DatabaseSeeder extends Seeder
             'location' => 'Puchong, Selangor',
             'amount' => 350.00,
             'status' => 'done',
-            'date' => today()
+            'date' => today(),
+            'detail' => 'Add on bunga tangan'
         ]);
 
         $order2 = Order::create([
@@ -101,7 +102,8 @@ class DatabaseSeeder extends Seeder
             'location' => 'Subang Jaya, Selangor',
             'amount' => 350.00,
             'status' => 'done',
-            'date' => today()
+            'date' => today(),
+            'detail' => 'Pasang outdoor'
         ]);
 
         $order3 = Order::create([
@@ -113,7 +115,8 @@ class DatabaseSeeder extends Seeder
             'location' => 'Shah Alam, Selangor',
             'amount' => 400.00,
             'status' => 'done',
-            'date' => today()
+            'date' => today(),
+            'detail' => 'Pasang tepi kolam'
         ]);
 
         // Guest order
