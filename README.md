@@ -44,6 +44,8 @@ Then open http://localhost:8000 or http://127.0.0.1:8000.
 > node setup.js --keep-data
 > ```
 
+For later recurring action for you to run the app without building, can "cd" into the laravel-backend and do "php artisan serve".
+
 ### Option 2: Manual setup
 
 If feeling extra rajin or want to troubleshoot maybe can do manual steps below.
