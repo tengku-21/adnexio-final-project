@@ -10,12 +10,12 @@ const root = dirname(fileURLToPath(import.meta.url));
 const frontend = resolve(root, "react-frontend");
 const backend = resolve(root, "laravel-backend");
 
+//argument untuk keep data lama
 const keepData = process.argv.includes("--keep-data");
 
 function run(command, cwd) {
   console.log(`\n> ${command}   (${cwd})`);
 
-  // shell: true is needed on Windows, where npm and composer are .cmd files
   const result = spawnSync(command, { cwd, stdio: "inherit", shell: true });
 
   if (result.status !== 0) {
@@ -24,7 +24,7 @@ function run(command, cwd) {
   }
 }
 
-// 1. React: install and build
+// 1. React: install dependencies then build
 run("npm install", frontend);
 run("npm run build", frontend);
 
@@ -49,5 +49,5 @@ run(
   backend
 );
 
-// Runs until you press Ctrl+C
+// Run
 run("php artisan serve", backend);

@@ -207,7 +207,7 @@ export default function PackagePage({}: OrderPageProps) {
                             </div>
                           </TableCell>
 
-                          <TableCell>
+                          <TableCell className="min-w-120 whitespace-normal break-words">
                             {order.detail}
                           </TableCell>
 

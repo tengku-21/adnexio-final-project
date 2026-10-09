@@ -12,7 +12,7 @@ This repo has two parts:
 ## Requirements
 
 - [Node.js](https://nodejs.org/) and npm
-- [PHP](https://www.php.net/) 8.4
+- [PHP](https://www.php.net/) 8.4 + php sqlite driver (-sqlite3 etc)
 - [Composer](https://getcomposer.org/)
 - A database (SQLite works with no setup, or MySQL if you've configured `.env`)
 
